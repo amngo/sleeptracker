@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="onClose()">
+        <ion-icon class="icon-toolbar" name="backspace"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>New Sleep Entry</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <h1 text-center>When did you sleep?</h1>
+
+  <ion-item>
+    <ion-label>Date</ion-label>
+    <ion-datetime
+      displayFormat="DDDD MMM D, YYYY"
+      [(ngModel)]="startDate"
+    ></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Time</ion-label>
+    <ion-datetime displayFormat="h:mm a" [(ngModel)]="startDate"></ion-datetime>
+  </ion-item>
+
+  <h1 text-center>When did you wake up?</h1>
+
+  <ion-item>
+    <ion-label>Date</ion-label>
+    <ion-datetime
+      displayFormat="DDDD MMM D, YYYY"
+      [(ngModel)]="endDate"
+    ></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Time</ion-label>
+    <ion-datetime displayFormat="h:mm a" [(ngModel)]="endDate"></ion-datetime>
+  </ion-item>
+
+  <ion-button margin-top expand="full" (click)="onAddEntry()"
+    >Add Entry</ion-button
+  >
+</ion-content>

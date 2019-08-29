@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="onClose()">
+        <ion-icon class="icon-toolbar" name="backspace"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>New Entry</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="container">
+    <h1 text-center>How sleepy are you?</h1>
+    <p class="value" text-center [ngStyle]="{ color: valueColor }">
+      {{ value }}
+    </p>
+    <h3 text-center>{{ description }}</h3>
+  </div>
+  <ion-range
+    (ionChange)="onChange($event)"
+    [(ngModel)]="value"
+    min="1"
+    max="7"
+    step="1"
+    snaps="true"
+    color="secondary"
+  ></ion-range>
+
+  <ion-item>
+    <ion-label>Date</ion-label>
+    <ion-datetime
+      displayFormat="DDDD MMM D, YYYY"
+      [(ngModel)]="dateTime"
+    ></ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Time</ion-label>
+    <ion-datetime displayFormat="h:mm a" [(ngModel)]="dateTime"></ion-datetime>
+  </ion-item>
+  <ion-button margin-top expand="full" (click)="onAddEntry()"
+    >Add Entry</ion-button
+  >
+</ion-content>

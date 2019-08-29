@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Sleep Logger</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="presentActionSheet()">
+        <ion-icon class="icon-toolbar" name="create"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-segment (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="sleep" checked> Sleep </ion-segment-button>
+    <ion-segment-button value="sleepiness"> Sleepiness </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="current" margin-top>
+    <ion-list *ngSwitchCase="'sleep'">
+      <ion-item *ngFor="let entry of allOvernightSleepData">
+        <ion-icon name="moon" slot="start"></ion-icon>
+        <ion-label>
+          <h3>{{ entry.date }}</h3>
+        </ion-label>
+        <ion-note slot="end">{{ entry.duration }}</ion-note>
+      </ion-item>
+    </ion-list>
+
+    <div *ngSwitchCase="'sleepiness'">
+      <ion-list lines="full" *ngFor="let date of dates">
+        <ion-list-header no-margin color="primary">
+          <ion-label>{{ date }}</ion-label>
+        </ion-list-header>
+        <ion-item
+          *ngFor="let sleepinessEntry of allSleepinessDataGrouped[date]"
+        >
+          <p class="time">{{ sleepinessEntry.time }}</p>
+          <p class="rating" [ngStyle]="{ color: sleepinessEntry.color }">
+            {{ sleepinessEntry.loggedValue }}
+          </p>
+          <ion-label> {{ sleepinessEntry.description }} </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

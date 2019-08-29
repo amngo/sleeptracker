@@ -1,0 +1,20 @@
+<ion-tabs>
+  <ion-tab tab="home">
+    <ion-router-outlet name="home"></ion-router-outlet>
+  </ion-tab>
+  <ion-tab tab="view-log">
+    <ion-router-outlet name="view-log"></ion-router-outlet>
+  </ion-tab>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home" href="/tabs/(home:home)">
+      <ion-icon name="home"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="view-log" href="/tabs/(view-log:view-log)">
+      <ion-icon name="list"></ion-icon>
+      <ion-label>View Log</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
